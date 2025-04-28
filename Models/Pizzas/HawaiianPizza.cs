@@ -4,12 +4,12 @@
     {
         public HawaiianPizza()
         {
-            _name = "Hawaiian";
-            _description = "A classic Hawaiian pizza with ham & pineapple.";
+            _name = "Hawaiian (GF)";
+            _description = "A gluten-free Hawaiian pizza with ham & pineapple.";
 
             _imagePath = "/imgs/hawaiian-pizza.jpg";
 
-            _isGlutenFree = false;
+            _isGlutenFree = true;
             _isVegetarian = false;
 
             _ingredients.Add("Tomato Sauce");
