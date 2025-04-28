@@ -21,5 +21,7 @@ namespace PizzaSelector.Models
         public IReadOnlyList<string> Ingredients => _ingredients;
         public IReadOnlyList<PizzaPrice> Prices => _prices;
         public string PizzaChef => _pizzaChef;
+
+        public abstract void PizzaChefName();
     }
 }

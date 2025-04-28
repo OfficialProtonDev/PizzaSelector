@@ -14,5 +14,7 @@ namespace PizzaSelector.Interfaces
         IReadOnlyList<PizzaPrice> Prices { get; }
 
         string PizzaChef { get; }
+
+        void PizzaChefName();
     }
 }
