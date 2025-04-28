@@ -1,17 +1,25 @@
-﻿namespace PizzaSelector.Models
+﻿using PizzaSelector.Interfaces;
+
+namespace PizzaSelector.Models
 {
-    public abstract class PizzaBase
+    public abstract class PizzaBase : IPizza
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string ImagePath { get; set; }
-        public bool IsGlutenFree { get; set; }
-        public bool IsVegetarian { get; set; }
+        protected string _name;
+        protected string _description;
+        protected string _imagePath;
+        protected bool _isGlutenFree;
+        protected bool _isVegetarian;
+        protected List<string> _ingredients = new List<string>();
+        protected List<PizzaPrice> _prices = new List<PizzaPrice>();
+        protected string _pizzaChef;
 
-        public List<string> Ingredients { get; set; }
-        public List<PizzaPrice> Prices { get; set; }
-
-        public string PizzaChef { get; set; }
-
+        public string Name => _name;
+        public string Description => _description;
+        public string ImagePath => _imagePath;
+        public bool IsGlutenFree => _isGlutenFree;
+        public bool IsVegetarian => _isVegetarian;
+        public IReadOnlyList<string> Ingredients => _ingredients;
+        public IReadOnlyList<PizzaPrice> Prices => _prices;
+        public string PizzaChef => _pizzaChef;
     }
 }
