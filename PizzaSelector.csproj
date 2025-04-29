@@ -6,4 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\imgs\chicken-cranberry-pizza.jpg" />
+    <None Include="wwwroot\imgs\hawaiian-pizza.jpg" />
+    <None Include="wwwroot\imgs\vegetarian-pizza.jpg" />
+  </ItemGroup>
+
 </Project>

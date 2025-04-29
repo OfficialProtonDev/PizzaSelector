@@ -1,23 +1,23 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+	ViewData["Title"] = "Home page";
 }
 
 @using PizzaSelector.Models
 
 <form method="post">
-    <div>
-        <select asp-for="SelectedPizzaType" asp-items="Html.GetEnumSelectList<PizzaType>()" class="form-select">
-        </select>
+	<div>
+		<select asp-for="SelectedPizzaType" asp-items="Html.GetEnumSelectList<PizzaType>()" class="form-select">
+		</select>
 
-        <button type="submit" class="btn btn-primary">
-            Select Pizza
-        </button>
-    </div>
+		<button type="submit" class="btn btn-primary">
+			Select Pizza
+		</button>
+	</div>
 </form>
 
 @if (Model.FirstLoad && Model.SelectedPizza != null)
 {
-    
+	<img src="@Model.SelectedPizza.ImagePath" alt="Pizza Image" class="img-fluid" width="300" />
 }
