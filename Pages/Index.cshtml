@@ -6,44 +6,69 @@
 
 @using PizzaSelector.Models
 
-<form method="post">
-	<div>
-		<select asp-for="SelectedPizzaType" asp-items="Html.GetEnumSelectList<PizzaType>()" class="form-select">
-		</select>
+<section class="container py-5">
+	<div class="row justify-content-center">
+		<div class="col-md-8 text-center">
+			<h1 class="mb-4">Choose Your Favourite Pizza</h1>
 
-		<button type="submit" class="btn btn-primary">
-			Select Pizza
-		</button>
+			<form method="post" class="d-flex flex-column align-items-center gap-3">
+				<div class="w-100" style="max-width: 300px;">
+					<select asp-for="SelectedPizzaType" asp-items="Html.GetEnumSelectList<PizzaType>()" class="form-select form-select-lg"></select>
+				</div>
+
+				<button type="submit" class="btn btn-primary btn-lg mt-2">
+					Select Pizza
+				</button>
+			</form>
+
+			@if (Model.FirstLoad && Model.SelectedPizza != null)
+			{
+				<div class="card shadow-lg mt-5 pt-3">
+					<div class="card-body">
+						<img src="@Model.SelectedPizza.ImagePath" alt="Pizza Image" class="img-fluid rounded mb-4" style="max-width: 300px;" />
+
+						<h2 class="card-title">@Model.SelectedPizza.Name</h2>
+						<p class="card-text lead">@Model.SelectedPizza.Description</p>
+
+						<div class="d-flex justify-content-center gap-3 my-3">
+							@if (Model.SelectedPizza.IsGlutenFree)
+							{
+								<span class="badge bg-warning text-dark">Gluten Free</span>
+							}
+							@if (Model.SelectedPizza.IsVegetarian)
+							{
+								<span class="badge bg-success">Vegetarian</span>
+							}
+						</div>
+
+						<div class="mt-4">
+							<h5>Ingredients</h5>
+							<ul class="list-group list-group-flush border-top border-bottom">
+								@foreach (var ingredient in Model.SelectedPizza.Ingredients)
+								{
+									<li class="list-group-item">@ingredient</li>
+								}
+							</ul>
+						</div>
+
+						<div class="mt-4">
+							<h5>Prices</h5>
+							<ul class="list-group list-group-flush border-top border-bottom">
+								@foreach (var price in Model.SelectedPizza.Prices)
+								{
+									<li class="list-group-item">
+										<strong>@price.Size:</strong> $@price.Price
+									</li>
+								}
+							</ul>
+						</div>
+
+						<p class="mt-4 text-muted">
+							<i>Prepared by: <strong>@Model.SelectedPizza.PizzaChef</strong></i>
+						</p>
+					</div>
+				</div>
+			}
+		</div>
 	</div>
-</form>
-
-@if (Model.FirstLoad && Model.SelectedPizza != null)
-{
-	<img src="@Model.SelectedPizza.ImagePath" alt="Pizza Image" class="img-fluid" width="300" />
-	<h2>@Model.SelectedPizza.Name</h2>
-	<p>@Model.SelectedPizza.Description</p>
-
-	@if (Model.SelectedPizza.IsGlutenFree)
-	{
-		<p><i><b>Gluten Free</b></i></p>
-	}
-	
-	@if (Model.SelectedPizza.IsVegetarian)
-	{
-		<p><i><b>Vegetarian</b></i></p>
-	}
-
-	<p><b>Ingredients:</b></p>
-	@foreach (var ingredient in Model.SelectedPizza.Ingredients)
-	{
-		<p>@ingredient</p>
-	}
-
-	<p><b>Prices:</b></p>
-	@foreach (var price in Model.SelectedPizza.Prices)
-	{
-		<p>@(price.Size) - $@price.Price</p>
-	}
-
-	<p><i>Prepared by: <b>@Model.SelectedPizza.PizzaChef</b></i></p>
-}
+</section>
