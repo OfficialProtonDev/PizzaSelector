@@ -10,7 +10,7 @@ namespace PizzaSelector.Factories
         {
             return pizzaType switch
             {
-                PizzaType.Hawaiian_GF => new HawaiianPizza(),
+                PizzaType.Hawaiian => new HawaiianPizza(),
                 PizzaType.ChickenCranberry => new ChickenCranberryPizza(),
                 PizzaType.Vegetarian => new VegetarianPizza(),
                 _ => throw new ArgumentOutOfRangeException(nameof(pizzaType), pizzaType, null)
