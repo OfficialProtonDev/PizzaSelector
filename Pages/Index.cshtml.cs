@@ -11,10 +11,10 @@ namespace PizzaSelector.Pages
         [BindProperty]
         public PizzaType SelectedPizzaType { get; set; }
 
-        public IPizza SelectedPizza { get; set; }
+        public IPizza? SelectedPizza { get; set; }
 
         public bool FirstLoad { get; set; } = false;
-
+        
         public void OnPost()
         {
             SelectedPizza = PizzaFactory.CreatePizza(SelectedPizzaType);
