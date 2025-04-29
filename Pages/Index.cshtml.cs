@@ -1,20 +1,24 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using PizzaSelector.Interfaces;
+using PizzaSelector.Factories;
+using PizzaSelector.Models;
 
 namespace PizzaSelector.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        [BindProperty]
+        public PizzaType SelectedPizzaType { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger)
+        public IPizza SelectedPizza { get; set; }
+
+        public bool FirstLoad { get; set; } = false;
+
+        public void OnPost()
         {
-            _logger = logger;
-        }
-
-        public void OnGet()
-        {
-
+            SelectedPizza = PizzaFactory.CreatePizza(SelectedPizzaType);
+            FirstLoad = SelectedPizza != null;
         }
     }
 }
