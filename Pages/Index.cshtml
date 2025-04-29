@@ -20,4 +20,8 @@
 @if (Model.FirstLoad && Model.SelectedPizza != null)
 {
 	<img src="@Model.SelectedPizza.ImagePath" alt="Pizza Image" class="img-fluid" width="300" />
+	<h2>@Model.SelectedPizza.Name</h2>
+	<p>@Model.SelectedPizza.Description</p>
+	<p><b>Gluten Free:</b> @Model.SelectedPizza.IsGlutenFree</p>
+	<p><b>Vegetarian:</b> @Model.SelectedPizza.IsVegetarian</p>
 }
