@@ -2,7 +2,7 @@
 {
     public enum PizzaType
     {
-        Hawaiian,
+        Hawaiian_GF,
         ChickenCranberry,
         Vegetarian
     }
