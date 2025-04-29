@@ -1,5 +1,6 @@
 ﻿using PizzaSelector.Interfaces;
 using PizzaSelector.Models;
+using PizzaSelector.Models.Pizzas;
 
 namespace PizzaSelector.Factories
 {
@@ -9,9 +10,9 @@ namespace PizzaSelector.Factories
         {
             return pizzaType switch
             {
-                PizzaType.Hawaiian => new Models.Pizzas.HawaiianPizza(),
-                PizzaType.ChickenCranberry => new Models.Pizzas.ChickenCranberryPizza(),
-                PizzaType.Vegetarian => new Models.Pizzas.VegetarianPizza(),
+                PizzaType.Hawaiian => new HawaiianPizza(),
+                PizzaType.ChickenCranberry => new ChickenCranberryPizza(),
+                PizzaType.Vegetarian => new VegetarianPizza(),
                 _ => throw new ArgumentOutOfRangeException(nameof(pizzaType), pizzaType, null)
             };
         }
