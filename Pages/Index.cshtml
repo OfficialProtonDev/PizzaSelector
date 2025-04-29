@@ -22,13 +22,26 @@
 	<img src="@Model.SelectedPizza.ImagePath" alt="Pizza Image" class="img-fluid" width="300" />
 	<h2>@Model.SelectedPizza.Name</h2>
 	<p>@Model.SelectedPizza.Description</p>
+
 	@if (Model.SelectedPizza.IsGlutenFree)
 	{
-		<p><b>Gluten Free</b></p>
+		<p><i><b>Gluten Free</b></i></p>
 	}
 	
 	@if (Model.SelectedPizza.IsVegetarian)
 	{
-		<p><b>Vegetarian</b></p>
+		<p><i><b>Vegetarian</b></i></p>
+	}
+
+	<p><b>Ingredients:</b></p>
+	@foreach (var ingredient in Model.SelectedPizza.Ingredients)
+	{
+		<p>@ingredient</p>
+	}
+
+	<p><b>Prices:</b></p>
+	@foreach (var price in Model.SelectedPizza.Prices)
+	{
+		<p>@(price.Size) - $@price.Price</p>
 	}
 }
